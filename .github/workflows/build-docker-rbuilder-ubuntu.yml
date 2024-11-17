@@ -16,6 +16,7 @@ on:
       - scripts/rbuilder/*
       - docker/rbuilder/Dockerfile-rbuilder-ubuntu
       - .github/workflows/build-docker-rbuilder-ubuntu.yml
+  workflow_dispatch:
 
 env:
   OS_TAG: "ubuntu"
