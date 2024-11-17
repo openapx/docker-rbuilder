@@ -1,0 +1,41 @@
+# For now ... rely on latest ubuntu baseline OS
+FROM openapx/rbuilder:latest-ubuntu
+
+# -- add license file to root directory
+COPY LICENSE /LICENSE-rbuilder
+RUN  chmod u+r-wx,g+r-wx,o+r-wx /LICENSE-rbuilder
+
+
+# -- configuration files
+#    note: this is the input location for Shell scripts below
+
+COPY libs-ubuntu packages /opt/openapx/config/rbuilder/
+
+RUN find /opt/openapx/config/rbuilder -type f -exec chmod u+r-wx,g+r-wx,o-rwx {} \; && \
+    find /opt/openapx/config/rbuilder -type d -exec chmod u+rx-w,g+rx-w,o-rwx {} \;
+
+
+# -- stage scripts in container
+#    note: /.scripts/* are transient
+#    note: /opt/* are presistent
+
+COPY --chmod=755 scripts/rbuilder/*.sh /opt/openapx/utilities/
+
+COPY .scripts/R/* /.scripts/R/
+COPY --chmod=755 .scripts/*.sh /.scripts/
+
+
+
+# -- scripted sequence
+#    1) add binary library dependencies
+#    2) download, build, check and install R from source
+#    3+4) secure log directory
+#    5) clean-up
+
+RUN /opt/openapx/utilities/bin-libs.sh /opt/openapx/config/rbuilder/libs-ubuntu && \
+    /.scripts/init.sh && \
+    find /logs/R/rbuilder -type f -exec chmod u+r-wx,g+r-wx,o-rwx {} \; && \
+    find /logs/R/rbuilder -type d -exec chmod u+rx-w,g+rx-w,o-rwx {} \; && \
+    rm -Rf /.scripts
+
+
