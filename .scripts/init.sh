@@ -86,7 +86,7 @@ EOT
     echo "   initiate /sources/packages directory"
     mkdir -p /sources/packages
 
-    echo "   installing admin utility packages"
+    echo "   installing utility packages"
     /opt/R/${R_VERSION}/bin/R CMD BATCH --no-restore --no-save $(dirname $0)/R/install_packages.R /logs/R/rbuilder/${R_VERSION}-install-packages.log
 
     for XSOURCE in $( ls /sources/packages | sort ); do
@@ -111,7 +111,7 @@ EOT
     echo "   clean source archive"
     rm -f /sources/packages/*
 
-    echo "   set admin utils install to read-only"
+    echo "   set utils install to read-only"
     find ${RVER_UTILSLIB} -type f -exec chmod u+r-wx,g+r-wx,o+r-wx {} \;
     find ${RVER_UTILSLIB} -type d -exec chmod u+rx-w,g+rx-w,o+rx-w {} \;
 
