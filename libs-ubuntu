@@ -1,0 +1,8 @@
+# - dependencies for devtools
+libharfbuzz-dev
+libfribidi-dev
+
+# - adding postgresql database
+#   note: used as db for openapx services
+postgresql
+postgresql-server-dev-all

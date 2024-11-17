@@ -1,0 +1,10 @@
+# -- development utilities
+devtools
+codetools
+desc
+
+# -- test frameworks
+testthat
+
+# -- support for db
+RPostgreSQL
