@@ -9,7 +9,7 @@ if ( ! dir.exists( save_sources_to ) && ! dir.create( save_sources_to, recursive
 
 
 # -- identify packages spec
-specs <- "/opt/openapx/config/rbuilder/packages"
+xspec <- "/opt/openapx/config/rbuilder/packages"
 
 
 # -- deploy specification

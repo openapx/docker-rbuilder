@@ -11,6 +11,8 @@ on:
     paths:
       - libs-ubuntu
       - packages
+      - .scripts/*
+      - .scripts/R/*
       - scripts/rbuilder/*
       - docker/rbuilder/Dockerfile-rbuilder-ubuntu
       - .github/workflows/build-docker-rbuilder-ubuntu.yml
