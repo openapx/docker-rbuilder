@@ -60,5 +60,5 @@ for ( xitem in list.dirs( head(.libPaths(), n = 1), recursive = FALSE, full.name
       writeLines( lst, con = file.path( xitem, y ) )  # note: should produce a file <algo> in the root of the package install
     }
 
-}
+
 
