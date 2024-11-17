@@ -83,8 +83,8 @@ EOT
 
     echo "-- deploying utility packages for R ${R_VERSION}"
 
-    echo "   initiate /sources/adminutils directory"
-    mkdir -p /sources/adminutils
+    echo "   initiate /sources/packages directory"
+    mkdir -p /sources/packages
 
     echo "   installing admin utility packages"
     /opt/R/${R_VERSION}/bin/R CMD BATCH --no-restore --no-save $(dirname $0)/R/install_packages.R /logs/R/rbuilder/${R_VERSION}-install-packages.log
