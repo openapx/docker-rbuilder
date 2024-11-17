@@ -103,7 +103,7 @@ EOT
 
 
     echo "   install log assessment"
-    grep "^ERROR:" /logs/R/rbuilder/${R_VERSION}-install-packages.log
+    grep -i "^ERROR:" /logs/R/rbuilder/${R_VERSION}-install-packages.log
 
     gzip -9 /logs/R/rbuilder/${R_VERSION}-install-packages.log
     chmod u+r-wx,g+r-wx,o+r-wx /logs/R/rbuilder/${R_VERSION}-install-packages.log.*
