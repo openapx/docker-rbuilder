@@ -1,5 +1,5 @@
-# For now ... rely on latest ubuntu baseline OS
-FROM openapx/rbuilder:latest-ubuntu
+# For now ... rely on latest ubuntu rbin
+FROM openapx/rbin:latest-ubuntu
 
 # -- add license file to root directory
 COPY LICENSE /LICENSE-rbuilder
