@@ -1,6 +1,11 @@
 # For now ... rely on latest ubuntu rbin
 FROM openapx/rbin:latest-ubuntu
 
+
+# -- container ID
+ARG OPENAPX_CONTAINERID="rbuilder-unknown"
+
+
 # -- add license file to root directory
 COPY LICENSE /LICENSE-rbuilder
 RUN  chmod u+r-wx,g+r-wx,o+r-wx /LICENSE-rbuilder
@@ -32,7 +37,8 @@ COPY --chmod=755 .scripts/*.sh /.scripts/
 #    3+4) secure log directory
 #    5) clean-up
 
-RUN /opt/openapx/utilities/bin-libs.sh /opt/openapx/config/rbuilder/libs-ubuntu && \
+RUN /opt/openapx/utilities/container-id.sh && \
+    /opt/openapx/utilities/bin-libs.sh /opt/openapx/config/rbuilder/libs-ubuntu && \
     /.scripts/init.sh && \
     find /logs/R/rbuilder -type f -exec chmod u+r-wx,g+r-wx,o-rwx {} \; && \
     find /logs/R/rbuilder -type d -exec chmod u+rx-w,g+rx-w,o-rwx {} \; && \
